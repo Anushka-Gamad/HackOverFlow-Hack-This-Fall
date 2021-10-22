@@ -10,9 +10,12 @@ const api_secret = process.env.STREAM_API_SECRET;
 const app_id = process.env.STREAM_APP_ID;
 
 const signup = async (req, res) => {
+    console.log(req.body);
     try {
         const { fullName, username, password, phoneNumber } = req.body;
-
+        console.log(fullName);
+        console.log(username);
+      
         const userId = crypto.randomBytes(16).toString('hex');
 
         const serverClient = connect(api_key, api_secret, app_id);
@@ -23,6 +26,8 @@ const signup = async (req, res) => {
 
         res.status(200).json({ token, fullName, username, userId, hashedPassword, phoneNumber });
     } catch (error) {
+        console.log("Hello");
+
         console.log(error);
 
         res.status(500).json({ message: error });

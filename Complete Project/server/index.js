@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-
+// const { signup , login } = require('./controllers/auth.js');
 const authRoutes = require("./routes/auth.js");
 
 const app = express();
@@ -15,6 +15,11 @@ app.use(express.urlencoded());
 app.get('/', (req,res) => {
     res.send("Hello , world");
 });
+// app.get('/auth/signup', (req,res) => {
+//     signup(req);
+//     console.log("Hi")
+//     res.send("Hello");
+// });
 
 app.use('/auth',authRoutes);
 
