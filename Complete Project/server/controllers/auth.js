@@ -34,8 +34,8 @@ const login = async(req,res) => {
     try {
         const { username, password } = req.body;
         
-        const serverClient = connect(api_key, api_secret, app_id);
-        const client = StreamChat.getInstance(api_key, api_secret);
+        const serverClient = connect('pudxvmxctfxa', 'bs6echb7v5f223h75hq6baaukzhnce7xu3draxj8ckfxbw7nzrcvuenf6g2fuxxt', '1148792');
+        const client = StreamChat.getInstance('pudxvmxctfxa', null, '1148792');
 
         const { users } = await client.queryUsers({ name: username });
 
