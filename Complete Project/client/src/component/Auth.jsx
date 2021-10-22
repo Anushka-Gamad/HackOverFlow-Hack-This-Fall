@@ -8,7 +8,7 @@ const initialState = {
     fullName : '',
     username: '',
     password: '',
-    confirmPassword = '',
+    confirmPassword : '',
     phoneNumber: '',
     avatarURL: '',
 }
@@ -35,12 +35,12 @@ const Auth = () => {
     return (
         <div className="auth__form-container">
             <div className="auth__form-container_fields">
-                <div className="auth__form-container_field-content">
+                <div className="auth__form-container_fields-content">
                     <p>{isSignup ? 'Sign Up' : 'Sign In'}</p>
                     <form onSubmit={(handleSubmit) => {}}>
                         {
                             isSignup && (
-                                <div className="auth__form-container__fields-content_input">
+                                <div className="auth__form-container_fields-content_input">
                                     <label htmlFor="fullName">Full Name</label>
                                     <input 
                                         type="text"
@@ -51,7 +51,7 @@ const Auth = () => {
                                     />
                                 </div>
                             )}
-                            <div className="auth__form-container__fields-content_input">
+                            <div className="auth__form-container_fields-content_input">
                                     <label htmlFor="username">Username</label>
                                     <input 
                                         type="text"
@@ -62,7 +62,7 @@ const Auth = () => {
                                     />
                                 </div>
                                 {isSignup && (
-                                <div className="auth__form-container__fields-content_input">
+                                <div className="auth__form-container_fields-content_input">
                                     <label htmlFor="phoneNumber">Phone Number</label>
                                     <input 
                                         type="text"
@@ -74,7 +74,7 @@ const Auth = () => {
                                 </div>
                             )}
                             {isSignup && (
-                                <div className="auth__form-container__fields-content_input">
+                                <div className="auth__form-container_fields-content_input">
                                     <label htmlFor="avatarURL">Avatar</label>
                                     <input 
                                         type="text"
@@ -85,7 +85,7 @@ const Auth = () => {
                                     />
                                 </div>
                             )}
-                            <div className="auth__form-container__fields-content_input">
+                            <div className="auth__form-container_fields-content_input">
                                     <label htmlFor="password">Password</label>
                                     <input 
                                         type="password"
@@ -96,7 +96,7 @@ const Auth = () => {
                                     />
                                 </div>
                                 {isSignup && (
-                                <div className="auth__form-container__fields-content_input">
+                                <div className="auth__form-container_fields-content_input">
                                     <label htmlFor="confirmPassword">Confirm Password</label>
                                     <input 
                                         type="password"
