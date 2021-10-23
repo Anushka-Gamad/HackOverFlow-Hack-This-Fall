@@ -9,8 +9,7 @@ const api_key = process.env.STREAM_API_KEY;
 const api_secret = process.env.STREAM_API_SECRET;
 const app_id = process.env.STREAM_APP_ID;
 
-const signup = async (req,res) => {
-
+const signup = async (req, res) => {
     try {
         const { fullName, username, password, phoneNumber } = req.body;
 
@@ -21,16 +20,16 @@ const signup = async (req,res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const token = serverClient.createUserToken(userId);
-        
+
         res.status(200).json({ token, fullName, username, userId, hashedPassword, phoneNumber });
     } catch (error) {
         console.log(error);
-        
-        res.status(500).json({message: error});
-        
+
+        res.status(500).json({ message: error });
     }
 };
-const login = async(req,res) => {
+
+const login = async (req, res) => {
     try {
         const { username, password } = req.body;
         
@@ -50,13 +49,11 @@ const login = async(req,res) => {
         } else {
             res.status(500).json({ message: 'Incorrect password' });
         }
-        
-    } catch (error) {
+    } catch (error) {ads
         console.log(error);
-        
-        res.status(500).json({message: error});
-        
+
+        res.status(500).json({ message: error });
     }
 };
 
-module.exports = { signup , login}
+module.exports = { signup, login }
