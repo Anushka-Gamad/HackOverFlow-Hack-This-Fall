@@ -3,16 +3,21 @@ import { StreamChat } from 'stream-chat';
 import { Chat } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 
+
 // import ChannelListContainer from './component/ChannelListContainer';
 // import ChannelContainer from './component/ChannelContainer';
 
-import { ChannelListContainer, ChannelContainer } from './component';
+import { ChannelListContainer, ChannelContainer, Auth } from './component';
 
 import './App.css';
 
 const apiKey = 'pudxvmxctfxa';
 
 const client = StreamChat.getInstance(apiKey); 
+
+const authToken = false;
+
+  if(!authToken) return <Auth />
 
 const App = () => {
   return (
