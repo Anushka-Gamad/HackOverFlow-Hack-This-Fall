@@ -13,7 +13,7 @@ const initialState = {
     confirmPassword : '',
     phoneNumber: '',
     avatarURL: '',
-}
+} 
 
 const Auth = () => {
     const [form, setForm] = useState(initialState);
