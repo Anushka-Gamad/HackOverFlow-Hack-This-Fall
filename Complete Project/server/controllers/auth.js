@@ -39,7 +39,7 @@ const login = async (req, res) => {
         const { username, password } = req.body;
         
         const serverClient = connect('pudxvmxctfxa', 'bs6echb7v5f223h75hq6baaukzhnce7xu3draxj8ckfxbw7nzrcvuenf6g2fuxxt', '1148792');
-        const client = StreamChat.getInstance('pudxvmxctfxa', null, '1148792');
+        const client = StreamChat.getInstance('pudxvmxctfxa', api_secret);
 
         const { users } = await client.queryUsers({ name: username });
 
