@@ -39,6 +39,7 @@ const TeamChannelList = ({children, error = false, loading, type, isCreating, se
 
                 />
             </div>
+            {children}
         </div>
     )
 }
