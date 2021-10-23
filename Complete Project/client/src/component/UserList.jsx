@@ -17,10 +17,17 @@ const ListContainer = ({ children }) => {
     )
 }
 
-const UserItem  = ({ user }) => {
+const UserItem  = ({ user, setSelectedUsers }) => {
     const [selected, setSelected] = useState(false)
 
     const handleSelect = () =>{
+        if(selected){
+            setSelectedUsers((prevUsers) => prevUsers.filter((prevUser) => prevUser !== user.id));
+        }
+        else {
+            setSelectedUsers((prevUsers) => [...prevUsers, user.id] );
+            // setSelectedUsers((prevUsers) => [...prevUsers, user.id])
+        }
         setSelected((prevSelected) => !prevSelected);
     }
 
@@ -38,11 +45,12 @@ const UserItem  = ({ user }) => {
     )
 }
 
-const UserList = () => {
+const UserList = ({ setSelectedUsers }) => {
     const { client } = useChatContext();
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [listEmpty, setListEmpty] = useState(false);
+    const [error, setError] = useState(false);
 
 
     useEffect(() => {
@@ -65,7 +73,7 @@ const UserList = () => {
                 }
 
             }catch(error){
-                console.log(error);
+                setError(true);
 
             }
             setLoading(false);
@@ -74,6 +82,23 @@ const UserList = () => {
         if(client) getUsers()
     }, [])
 
+    if(error) {
+        return(
+            <ListContainer>
+            <div className="user-list__message">
+              Error Loading, pllease refresh and try again
+          </div></ListContainer>
+        )
+    }
+    if(listEmpty) {
+        return(
+            <ListContainer>
+            <div className="user-list__message">
+              No Users found
+          </div></ListContainer>
+        )
+    }
+
     return(
 
       <ListContainer>
@@ -81,7 +106,7 @@ const UserList = () => {
               Loading users ...
           </div> : ( 
               users ?.map((user, i) => (
-                  <UserItem index={i} key={user.id} user={user}/>
+                  <UserItem index={i} key={user.id} user={user} setSelectedUsers={setSelectedUsers} />
               )))}
       </ListContainer>
     )
