@@ -94,7 +94,7 @@ const UserList = ({ setSelectedUsers }) => {
         return(
             <ListContainer>
             <div className="user-list__message">
-              No Users found
+              No Users found.
           </div></ListContainer>
         )
     }
