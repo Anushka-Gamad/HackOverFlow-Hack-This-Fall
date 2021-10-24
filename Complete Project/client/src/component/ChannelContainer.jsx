@@ -1,16 +1,10 @@
 import React from 'react';
-import { Channel, useChatContext, MessageTeam } from 'stream-chat-react';
+import { Channel, MessageTeam } from 'stream-chat-react';
 
-import { ChannelInner, CreateChannel, EditChannel} from './';
+import { ChannelInner, CreateChannel, EditChannel } from './';
 
-
-
-const ChannelContainer = (
-        {isCreating, setIsCreating, isEditing, setIsEditing,createType,}) => {
-
-    const { channel } = useChatContext();
-
-    if(isCreating){
+const ChannelContainer = ({ isCreating, setIsCreating, isEditing, setIsEditing, createType }) => {
+    if(isCreating) {
         return (
             <div className="channel__container">
                 <CreateChannel createType={createType} setIsCreating={setIsCreating} />
@@ -18,32 +12,31 @@ const ChannelContainer = (
         )
     }
 
-    if(isEditing){
+    if(isEditing) {
         return (
             <div className="channel__container">
                 <EditChannel setIsEditing={setIsEditing} />
-            </div>
-
+            </div> 
         )
     }
 
     const EmptyState = () => (
         <div className="channel-empty__container">
-            <p className="channel-empty__first">This is the begining of you chat history.</p>
-            <p className="channel-empty__second">Connect with Doctors,send messages , attachments,emojis and  more!</p>
+            <p className="channel-empty__first">This is the beginning of your chat history.</p>
+            <p className="channel-empty__second">Send messages, attachments, links, emojis, and more!</p>
         </div>
     )
 
     return (
-        <div className="channel__container">
-            <Channel 
+        <div className=" channel__container">
+            <Channel
                 EmptyStateIndicator={EmptyState}
-                Message={(messageProps, i) => <MessageTeam key={i} {...messageProps}/>}
+                Message={(messageProps, i) => <MessageTeam key={i} {...messageProps} />}
             >
                 <ChannelInner setIsEditing={setIsEditing} />
             </Channel>
         </div>
-    )
+    );
 }
 
-export default ChannelContainer
+export default ChannelContainer;
